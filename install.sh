@@ -54,7 +54,7 @@ else
   echo ""
   read -rp "Choose an option [m/o/c]: " choice
 
-  case "${choice,,}" in
+  case "$(echo "$choice" | tr '[:upper:]' '[:lower:]')" in
     m)
       BACKUP="${SETTINGS_FILE}.bak.$(date +%Y%m%d-%H%M%S)"
       cp "$SETTINGS_FILE" "$BACKUP"
