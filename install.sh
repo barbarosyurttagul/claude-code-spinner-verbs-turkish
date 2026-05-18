@@ -52,7 +52,7 @@ else
   echo "  [o] Overwrite — replace entire settings file"
   echo "  [c] Cancel"
   echo ""
-  read -rp "Choose an option [m/o/c]: " choice
+  read -rp "Choose an option [m/o/c]: " choice </dev/tty
 
   case "$(echo "$choice" | tr '[:upper:]' '[:lower:]')" in
     m)
