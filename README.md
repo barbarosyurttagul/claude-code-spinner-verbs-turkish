@@ -1,14 +1,14 @@
 # Claude Code Spinner Verbs — Turkish Pack
 
-300+ Turkish-flavoured verbs for the Claude Code terminal spinner.
+85+ Turkish-flavoured verbs for the Claude Code terminal spinner.
 
 While Claude grinds away in your terminal, instead of the default spinner text you get authentic Turkish energy:
 
-> _Kafa patlatıyor…_
-> _Tam gaz gidiyor…_
-> _Baklava katmanlarını sayıyor…_
-> _Kafayı yiyor…_
-> _Nöronları ateşliyor…_
+> _beni anlamadın ya, ben ona yanıyorum…_
+> _Adaya veda eden isim oluyor…_
+> _Horon tepiyor…_
+> _Marmaraya biniyor…_
+> _Düşeş atıyor…_
 
 ## Requirements
 
@@ -55,10 +55,9 @@ Change `"mode"` in your `~/.claude/settings.json` to switch.
 
 The verbs span four flavour categories:
 
-- **-yor present-participle action words** — Düşünüyor, Hesaplıyor, Yırtıyor, Kaynıyor…
 - **Turkish idioms & expressions** — Kafa patlatıyor, Kolları sıvıyor, Tam gaz gidiyor, Dişini sıkıyor…
 - **Cultural Turkish references** — Çayı demliyor, Boğaz'a bakıyor, Kapalıçarşı'da kaybolmuş, Vapurda martılara bakıyor…
-- **Energetic slang** — Makine gibi çalışıyor, Ejderha gibi nefes alıyor, Roket gibi fırlamaya hazır…
+- **Energetic slang** — Makine gibi çalışıyor, Ejderha gibi nefes alıyor, Bir taşla iki kuş vuruyor…
 
 All verbs are generic — they describe effort, mood, or state, not coding tasks.
 
