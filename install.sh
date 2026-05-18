@@ -57,8 +57,8 @@ if [[ -f "$SETTINGS_FILE" ]]; then
   echo "  [o] Overwrite — replace the whole file with just the spinner verbs"
   echo "  [c] Cancel"
   echo
-  read -rp "What'll it be? [m/o/c]: " CHOICE
-  case "${CHOICE,,}" in
+  read -rp "What'll it be? [m/o/c]: " CHOICE </dev/tty
+  case "$(echo "$CHOICE" | tr '[:upper:]' '[:lower:]')" in
     m) ACTION="merge" ;;
     o) ACTION="overwrite" ;;
     c|*) say "Right so, nothin' done. Off ye go."; exit 0 ;;
