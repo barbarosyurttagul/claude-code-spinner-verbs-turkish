@@ -4,11 +4,13 @@
 
 While Claude grinds away in your terminal, instead of the default spinner text you get authentic Turkish energy:
 
-> _beni anlamadın ya, ben ona yanıyorum…_
-> _Adaya veda eden isim oluyor…_
-> _Horon tepiyor…_
-> _Marmaraya biniyor…_
-> _Düşeş atıyor…_
+```
+beni anlamadın ya, ben ona yanıyorum
+Adaya veda eden isim oluyor…
+Horon tepiyor…
+Marmaraya biniyor…
+Düşeş atıyor…
+```
 
 ## Requirements
 
