@@ -1,9 +1,9 @@
 #Requires -Version 5.1
 <#
 .SYNOPSIS
-    Installs Turkish spinner verbs for Claude Code.
+    Claude Code için Türkçe spinner fiillerini kurar.
 .DESCRIPTION
-    Downloads spinner-verbs.json and merges it into ~/.claude/settings.json.
+    spinner-verbs.json dosyasını indirir ve ~/.claude/settings.json dosyasına ekler.
 #>
 
 $ErrorActionPreference = 'Stop'
@@ -17,11 +17,11 @@ function Write-Warn  { param($Msg) Write-Host "[turkish-verbs] $Msg" -Foreground
 function Write-Err   { param($Msg) Write-Host "[turkish-verbs] $Msg" -ForegroundColor Red }
 
 # Fetch verbs
-Write-Info 'Fetching Turkish spinner verbs...'
+Write-Info 'GitHub''dan son fiiller çekiliyor...'
 try {
     $VerbsData = Invoke-RestMethod -Uri $VerbsUrl -UseBasicParsing
 } catch {
-    Write-Err "Failed to download verbs: $_"
+    Write-Err "Fiiller indirilemedi: $_"
     exit 1
 }
 
@@ -36,45 +36,45 @@ if (-not (Test-Path $SettingsFile)) {
     # No existing settings — write fresh
     $NewSettings = [PSCustomObject]@{ spinnerVerbs = $SpinnerVerbs }
     $NewSettings | ConvertTo-Json -Depth 10 | Set-Content -Path $SettingsFile -Encoding UTF8
-    Write-Info "Created $SettingsFile with Turkish spinner verbs."
+    Write-Info "Türkçe spinner fiiilleriyle $SettingsFile oluşturuldu."
 } else {
-    Write-Warn "Existing settings file found at $SettingsFile"
+    Write-Warn "Mevcut ayar dosyası bulundu: $SettingsFile"
     Write-Host ''
-    Write-Host '  [m] Merge    - replace only spinnerVerbs, keep all other settings'
-    Write-Host '  [o] Overwrite - replace entire settings file'
-    Write-Host '  [c] Cancel'
+    Write-Host '  [m] Birleştir  - diğer ayarları koru, sadece spinnerVerbs''i değiştir'
+    Write-Host '  [o] Üstüne yaz - tüm dosyayı Türkçe fiillerle değiştir'
+    Write-Host '  [c] İptal'
     Write-Host ''
-    $Choice = Read-Host 'Choose an option [m/o/c]'
+    $Choice = Read-Host 'Ne yapalım? [m/o/c]'
 
     switch ($Choice.ToLower()) {
         'm' {
             $Backup = "$SettingsFile.bak.$(Get-Date -Format 'yyyyMMdd-HHmmss')"
             Copy-Item $SettingsFile $Backup
-            Write-Warn "Backed up existing settings to $Backup"
+            Write-Warn "Mevcut ayarlar yedeklendi: $Backup"
 
             $Existing = Get-Content $SettingsFile -Raw | ConvertFrom-Json
             $Existing | Add-Member -MemberType NoteProperty -Name 'spinnerVerbs' -Value $SpinnerVerbs -Force
             $Existing | ConvertTo-Json -Depth 10 | Set-Content -Path $SettingsFile -Encoding UTF8
-            Write-Info "Merged Turkish spinner verbs into $SettingsFile"
+            Write-Info "Türkçe spinner fiiilleri $SettingsFile dosyasına eklendi."
         }
         'o' {
             $Backup = "$SettingsFile.bak.$(Get-Date -Format 'yyyyMMdd-HHmmss')"
             Copy-Item $SettingsFile $Backup
-            Write-Warn "Backed up existing settings to $Backup"
+            Write-Warn "Mevcut ayarlar yedeklendi: $Backup"
 
             $NewSettings = [PSCustomObject]@{ spinnerVerbs = $SpinnerVerbs }
             $NewSettings | ConvertTo-Json -Depth 10 | Set-Content -Path $SettingsFile -Encoding UTF8
-            Write-Info "Overwrote $SettingsFile with Turkish spinner verbs."
+            Write-Info "$SettingsFile Türkçe spinner fiilleriyle değiştirildi."
         }
         'c' {
-            Write-Info 'Cancelled. No changes made.'
+            Write-Info 'İptal edildi. Hiçbir şey değiştirilmedi.'
             exit 0
         }
         default {
-            Write-Err 'Invalid choice. Aborting.'
+            Write-Err 'Geçersiz seçim. Duruyorum.'
             exit 1
         }
     }
 }
 
-Write-Info 'Done! Restart Claude Code to see Turkish verbs in action.'
+Write-Info 'Tamam. Yeni spinner''ı görmek için Claude Code''u yeniden başlat.'

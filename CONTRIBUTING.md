@@ -1,27 +1,27 @@
-# Contributing
+# Katkı
 
-Contributions welcome! Here's how to add more verbs.
+Katkılar memnuniyetle karşılanır! Yeni fiil eklemek için:
 
-## Adding verbs
+## Fiil ekleme
 
-1. Fork the repository
-2. Open `spinner-verbs.json`
-3. Add your verbs to the `verbs` array (alphabetically or thematically is fine)
-4. Open a pull request
+1. Repoyu fork'la
+2. `spinner-verbs.json` dosyasını aç
+3. Fiilini `verbs` dizisine ekle (alfabetik veya tematik sıra, ikisi de olur)
+4. Pull request aç
 
-## Verb quality guidelines
+## Kalite kriterleri
 
-**Do:**
-- Describe effort, mood, state, or character — "Kafa patlatıyor", "Tam gaz gidiyor", "Dağ gibi duruyor"
-- Use authentic Turkish colloquialisms and idioms
-- Keep it short — it's terminal output, not a novel
-- Turkish cultural references are fair game — food, geography, traditions
+**Olur:**
+- Çalışma durumunu, ruh halini veya karakteri anlatan ifadeler — "Kafa patlatıyor", "Tam gaz gidiyor", "Dağ gibi duruyor"
+- Gerçek Türkçe deyimler ve argo
+- Kısa ve öz — terminal çıktısı, roman değil
+- Kültürel referanslar serbesttir — yemek, coğrafya, 80'ler-90'lar, Nasreddin Hoca, pop müzik…
 
-**Don't:**
-- Reference specific coding tasks ("Kodu derliyor", "Testi çalıştırıyor" — these are already what Claude is doing)
-- Add mean-spirited content about people, places, or communities
-- Add duplicates
+**Olmaz:**
+- Yazılım görevlerine özel ifadeler ("Kodu derliyor", "Testi çalıştırıyor" — bunlar zaten Claude'un yaptığı şeyler)
+- Kişilere, yerlere veya topluluklara yönelik kötü niyetli içerik
+- Tekrar eden ifadeler
 
-## Licensing
+## Lisans
 
-By contributing, you agree your verbs are released under the MIT License.
+Katkıda bulunarak fiillerinin MIT Lisansı kapsamında yayınlanmasını kabul etmiş olursun.

@@ -1,22 +1,20 @@
-# Claude Code Spinner Verbs — Turkish Pack
+# Claude Code Spinner Verbs — Türkçe Paket
 
-85+ Turkish-flavoured verbs for the Claude Code terminal spinner.
-
-While Claude grinds away in your terminal, instead of the default spinner text you get authentic Turkish energy:
+Claude Code terminalinde çalışırken varsayılan spinner yazısı yerine gerçek Türk enerjisi:
 
 ```
-beni anlamadın ya, ben ona yanıyorum
+beni anlamadın ya, ben ona yanıyorum…
 Adaya veda eden isim oluyor…
 Horon tepiyor…
 Marmaraya biniyor…
 Düşeş atıyor…
 ```
 
-## Requirements
+## Gereksinimler
 
-- Claude Code **v2.1.23** or later
+- Claude Code **v2.1.23** veya üzeri
 
-## Install
+## Kurulum
 
 ### macOS / Linux
 
@@ -30,39 +28,41 @@ curl -fsSL https://raw.githubusercontent.com/barbarosyurttagul/claude-code-spinn
 irm https://raw.githubusercontent.com/barbarosyurttagul/claude-code-spinner-verbs-turkish/refs/heads/master/install.ps1 | iex
 ```
 
-### Manual
+### Elle kurulum
 
-1. Download `spinner-verbs.json` from this repo
-2. Copy the `spinnerVerbs` block into your `~/.claude/settings.json`:
+1. `spinner-verbs.json` dosyasını bu repodan indirin
+2. `spinnerVerbs` bloğunu `~/.claude/settings.json` dosyanıza ekleyin:
 
 ```json
 {
   "spinnerVerbs": {
     "mode": "replace",
-    "verbs": ["Düşünüyor", "Hesaplıyor", "..."]
+    "verbs": ["İpe un seriyor", "Dört nala gidiyor", "..."]
   }
 }
 ```
 
-## Modes
+## Modlar
 
-| Mode      | Behaviour                                           |
-| --------- | --------------------------------------------------- |
-| `replace` | Only Turkish verbs shown (default)                  |
-| `append`  | Turkish verbs mixed with Claude's built-in defaults |
+| Mod       | Davranış                                                 |
+| --------- | -------------------------------------------------------- |
+| `replace` | Yalnızca Türkçe fiiller gösterilir (varsayılan)          |
+| `append`  | Türkçe fiiller Claude'un varsayılanlarıyla karışık gelir |
 
-Change `"mode"` in your `~/.claude/settings.json` to switch.
+`~/.claude/settings.json` içindeki `"mode"` değerini değiştirerek geçiş yapabilirsiniz.
 
-## What's in the pack
+## Pakette neler var
 
-The verbs span four flavour categories:
+- **Türk deyimleri** — İpe un seriyor, Göle maya çalıyor, Bir taşla iki kuş vuruyor…
+- **Kültürel referanslar** — Koalisyon kuruyor, Elinin hamuruyla işe karışıyor, Düşeş atıyor…
+- **80'ler-90'lar nostaljisi** — Kaseti kalemle sarıyor, başkası olma kendin ol, Kral FM dinliyor…
 
-- **Turkish idioms & expressions** — Kafa patlatıyor, Kolları sıvıyor, Tam gaz gidiyor, Dişini sıkıyor…
-- **Cultural Turkish references** — Çayı demliyor, Boğaz'a bakıyor, Kapalıçarşı'da kaybolmuş, Vapurda martılara bakıyor…
-- **Energetic slang** — Makine gibi çalışıyor, Ejderha gibi nefes alıyor, Bir taşla iki kuş vuruyor…
+Tüm fiiller geneldir — çalışma durumunu, ruh halini veya karakteri anlatır; yazılım görevlerini değil.
 
-All verbs are generic — they describe effort, mood, or state, not coding tasks.
+## Kişiselleştirme
 
-## License
+Hoşlanmadığın ifade mi var? Satırı sil. Düz JSON, compiler gerekmiyor.
+
+## Lisans
 
 MIT

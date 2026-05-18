@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #
-# install.sh — Install Turkish spinner verbs into Claude Code.
-# macOS / Linux. Requires: bash, curl, jq.
+# install.sh — Claude Code için Türkçe spinner fiillerini kurar.
+# macOS / Linux. Gereksinimler: bash, curl, jq.
 #
 set -euo pipefail
 
@@ -18,7 +18,7 @@ err()  { printf "\033[1;31m==>\033[0m %s\n" "$*" >&2; }
 # --- prerequisites ---
 for cmd in curl jq; do
   if ! command -v "$cmd" >/dev/null 2>&1; then
-    err "'$cmd' is required but not installed."
+    err "'$cmd' kurulu değil, gerekli."
     case "$cmd" in
       jq)
         err "  macOS:  brew install jq"
@@ -30,18 +30,18 @@ for cmd in curl jq; do
 done
 
 # --- fetch the verbs ---
-say "Fetchin' the latest verbs from GitHub..."
+say "GitHub'dan son fiiller çekiliyor..."
 TMP_VERBS="$(mktemp)"
 trap 'rm -f "$TMP_VERBS"' EXIT
 
 if ! curl -fsSL "$REPO_RAW_URL" -o "$TMP_VERBS"; then
-  err "Couldn't fetch the verbs file. Check your internet, or the URL:"
+  err "Fiiller çekilemedi. İnternet bağlantını veya şu URL'yi kontrol et:"
   err "  $REPO_RAW_URL"
   exit 1
 fi
 
 if ! jq empty "$TMP_VERBS" 2>/dev/null; then
-  err "Downloaded file isn't valid JSON. Aborting before we banjax anything."
+  err "İndirilen dosya geçerli JSON değil. Bir şeyleri mahvetmeden duruyorum."
   exit 1
 fi
 
@@ -51,17 +51,17 @@ mkdir -p "$SETTINGS_DIR"
 # --- decide what to do with existing settings ---
 ACTION="install"
 if [[ -f "$SETTINGS_FILE" ]]; then
-  warn "Found existing settings at: $SETTINGS_FILE"
+  warn "Mevcut ayar dosyası bulundu: $SETTINGS_FILE"
   echo
-  echo "  [m] Merge   — keep your other settings, replace only spinnerVerbs"
-  echo "  [o] Overwrite — replace the whole file with just the spinner verbs"
-  echo "  [c] Cancel"
+  echo "  [m] Birleştir  — diğer ayarları koru, sadece spinnerVerbs'i değiştir"
+  echo "  [o] Üstüne yaz — tüm dosyayı Türkçe fiillerle değiştir"
+  echo "  [c] İptal"
   echo
-  read -rp "What'll it be? [m/o/c]: " CHOICE </dev/tty
+  read -rp "Ne yapalım? [m/o/c]: " CHOICE </dev/tty
   case "$(echo "$CHOICE" | tr '[:upper:]' '[:lower:]')" in
     m) ACTION="merge" ;;
     o) ACTION="overwrite" ;;
-    c|*) say "Right so, nothin' done. Off ye go."; exit 0 ;;
+    c|*) say "Tamam, hiçbir şey yapılmadı."; exit 0 ;;
   esac
 fi
 
@@ -69,7 +69,7 @@ fi
 if [[ -f "$SETTINGS_FILE" ]]; then
   BACKUP="${SETTINGS_FILE}.bak.$(date +%Y%m%d-%H%M%S)"
   cp "$SETTINGS_FILE" "$BACKUP"
-  say "Backed up existing settings to: $BACKUP"
+  say "Mevcut ayarlar yedeklendi: $BACKUP"
 fi
 
 # --- write the new file ---
@@ -81,7 +81,7 @@ case "$ACTION" in
     MERGED="$(mktemp)"
     jq -s '.[0] * .[1]' "$SETTINGS_FILE" "$TMP_VERBS" > "$MERGED"
     if ! jq empty "$MERGED" 2>/dev/null; then
-      err "Merge produced invalid JSON. Your original settings are untouched."
+      err "Birleştirme geçersiz JSON üretti. Orijinal ayarların dokunulmadan duruyor."
       rm -f "$MERGED"
       exit 1
     fi
@@ -89,5 +89,5 @@ case "$ACTION" in
     ;;
 esac
 
-say "Sorted. Restart Claude Code to see the new spinner."
-say "If you change your mind, your old settings are in the .bak file."
+say "Tamam. Yeni spinner'ı görmek için Claude Code'u yeniden başlat."
+say "Fikrin değişirse eski ayarların .bak dosyasında duruyor."
